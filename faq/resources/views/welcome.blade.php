@@ -1,7 +1,29 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <x-head-tag title="Welcome"/>
-    <body class="">
+    <body class="bg-gray-100">
+        <header class="bg-white shadow">
+            <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+                <h1 class="text-xl font-bold text-gray-700">Laravel Q&A Platform</h1>
+                <nav class="space-x-4">
+                    @if(auth()->check())
+                        <!-- Bejelentkezett felhasználók -->
+                        <a href="{{ route('questions.create') }}" class="text-gray-700 hover:text-gray-900">Új kérdés</a>
+                        <a href="{{ route('profile.show', auth()->user()->id) }}" class="text-gray-700 hover:text-gray-900">Profil</a>
+                        <a href="{{ route('logout') }}" class="text-red-500 hover:text-red-700"
+                           onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Kijelentkezés</a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
+                            @csrf
+                        </form>
+                    @else
+                        <!-- Nem bejelentkezett felhasználók -->
+                        <a href="{{ route('login') }}" class="text-gray-700 hover:text-gray-900">Login</a>
+                        <a href="{{ route('register') }}" class="text-gray-700 hover:text-gray-900">Register</a>
+                    @endif
+                </nav>
+            </div>
+        </header>
+        
         <main class="container mx-auto px-4 py-8">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 
