@@ -25,10 +25,10 @@
                         @if(auth()->check())
                             <!-- Bejelentkezett Felhasználók -->
                             <li class="nav-item">
-                                <a href="{{ route('questions.create') }}" class="nav-link text-gray-700">Új kérdés</a>
+                                {{-- <a href="{{ route('questions.create') }}" class="nav-link text-gray-700">Új kérdés</a> --}}
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('profile.show', auth()->user()->id) }}" class="nav-link text-gray-700">Profil</a>
+                                {{-- <a href="{{ route('profile.show', auth()->user()->id) }}" class="nav-link text-gray-700">Profil</a> --}}
                             </li>
                             <li class="nav-item">
                                 <a href="{{ route('logout') }}" class="nav-link text-danger"
