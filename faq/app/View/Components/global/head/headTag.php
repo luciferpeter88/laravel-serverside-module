@@ -8,10 +8,9 @@ use Illuminate\View\Component;
 
 class headTag extends Component
 {
-    public $title;
-    public function __construct( $title = null)
+    public function __construct( )
     {
-        $this->title = $title;
+        
     }
  
 
