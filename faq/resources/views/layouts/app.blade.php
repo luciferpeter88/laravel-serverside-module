@@ -26,7 +26,7 @@
                         @if(auth()->check())
                             <!-- Bejelentkezett Felhasználók -->
                             <li class="nav-item">
-                                <a href="{{ route('dashboard') }}" class="nav-link text-white" style="visibility: visible">Dashboard</a>
+                                <a href="{{ route('dashboard.profile') }}" class="nav-link text-white" style="visibility: visible">Dashboard</a>
                             </li>
                             <li class="nav-item">
                                 <a href="{{ route('logout') }}" class="nav-link text-danger" style="visibility: visible"

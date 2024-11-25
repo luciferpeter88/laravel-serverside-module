@@ -218,7 +218,6 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque posuere fe
                                         </span>
                                         <p class="text-sm font-medium">
                                             <span class="text-primary">Click to upload</span>
-                                            or drag and drop
                                         </p>
                                         <p class="mt-1.5 text-sm font-medium">
                                             SVG, PNG, JPG or GIF
