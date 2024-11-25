@@ -66,4 +66,9 @@ class DashboardController extends Controller
     {
         return view('dashboard.settings'); // Settings page
     }
+
+    public function allpost()
+    {
+        return view('dashboard.allpost'); // All post page
+    }
 }
