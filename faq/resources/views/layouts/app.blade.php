@@ -26,10 +26,7 @@
                         @if(auth()->check())
                             <!-- Bejelentkezett Felhasználók -->
                             <li class="nav-item">
-                                {{-- <a href="{{ route('questions.create') }}" class="nav-link text-gray-700">Új kérdés</a> --}}
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ route('home') }}" class="nav-link text-white" style="visibility: visible">Dashboard</a>
+                                <a href="{{ route('dashboard') }}" class="nav-link text-white" style="visibility: visible">Dashboard</a>
                             </li>
                             <li class="nav-item">
                                 <a href="{{ route('logout') }}" class="nav-link text-danger" style="visibility: visible"
