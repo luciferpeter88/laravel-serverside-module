@@ -27,8 +27,8 @@
                     <!-- ===== Main Content Start ===== -->
                     <main>
                         @yield('content')
-                        segg
-                        <!-- Content specific to each page -->
+                     
+                        <!-- A dahshboardnak az aloldalai ide kerulnek be -->
                     </main>
                     <!-- ===== Main Content End ===== -->
                 </div>
