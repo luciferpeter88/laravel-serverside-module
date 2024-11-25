@@ -20,17 +20,13 @@
                     <x-dash-header1 />
                     <x-dash-sidebar />
                 </aside>
-                <!-- ===== Sidebar End ===== -->
-                <!-- ===== Content Area Start ===== -->
                 <div class="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden">
                     <x-dash-header2 />
-                    <!-- ===== Main Content Start ===== -->
                     <main>
                         @yield('content')
                      
                         <!-- A dahshboardnak az aloldalai ide kerulnek be -->
                     </main>
-                    <!-- ===== Main Content End ===== -->
                 </div>
             </div>
         </div>
