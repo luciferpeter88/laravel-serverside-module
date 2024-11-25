@@ -1,6 +1,6 @@
 <?php
 
-namespace App\View\Components\global\head;
+namespace App\View\Components\head;
 
 use Closure;
 use Illuminate\Contracts\View\View;
@@ -19,6 +19,6 @@ class headTag extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.global.head.head-tag');
+        return view('components.head.head-tag');
     }
 }

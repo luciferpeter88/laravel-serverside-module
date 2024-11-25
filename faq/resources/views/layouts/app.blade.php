@@ -1,12 +1,12 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <x-head-tag />
-<body>
-    <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+<body class="dark text-bodydark bg-boxdark-2" >
+    <div id="app" >
+        <nav class="navbar navbar-expand-md navbar-light bg-[rgb(36,48,63)] shadow-sm h-20 ">
             <div class="container">
                 <!-- Brand -->
-                <a class="navbar-brand fw-bold text-gray-700" href="{{ url('/') }}">
+                <a class="navbar-brand fw-bold text-white" href="{{ url('/') }}">
                     Laravel Q&A Platform
                 </a>
         
@@ -16,24 +16,25 @@
                 </button>
         
                 <!-- Navbar Content -->
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div class="collapse navbar-collapse" id="navbarSupportedContent" >
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto"></ul>
         
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ms-auto">
+                    <ul class="navbar-nav ms-auto ">
+                        {{-- global helper function --}}
                         @if(auth()->check())
                             <!-- Bejelentkezett Felhasználók -->
                             <li class="nav-item">
                                 {{-- <a href="{{ route('questions.create') }}" class="nav-link text-gray-700">Új kérdés</a> --}}
                             </li>
                             <li class="nav-item">
-                                {{-- <a href="{{ route('profile.show', auth()->user()->id) }}" class="nav-link text-gray-700">Profil</a> --}}
+                                <a href="{{ route('home') }}" class="nav-link text-white" style="visibility: visible">Dashboard</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('logout') }}" class="nav-link text-danger"
+                                <a href="{{ route('logout') }}" class="nav-link text-danger" style="visibility: visible"
                                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                    Kijelentkezés
+                                   Logout
                                 </a>
                             </li>
                             <!-- Kijelentkezési Form -->
@@ -44,12 +45,12 @@
                             <!-- Vendégek -->
                             @if (Route::has('login'))
                                 <li class="nav-item">
-                                    <a class="nav-link text-gray-700" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                    <a class="nav-link text-white" style="visibility: visible" href="{{ route('login') }}">{{ __('Login') }}</a>
                                 </li>
                             @endif
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link text-gray-700" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link text-white" style="visibility: visible" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
                             @endif
                         @endif

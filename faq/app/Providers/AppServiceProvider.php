@@ -21,7 +21,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         
-        Blade::component('components.global.head.head-tag', 'head-tag');
+        Blade::component('components.head.head-tag', 'head-tag');
        
     }
 }
