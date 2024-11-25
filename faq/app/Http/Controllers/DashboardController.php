@@ -23,7 +23,7 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return view('dashboard'); // Optional: Main dashboard page
+        return view('dashboard'); // Dashboard page
     }
 
     public function profile()
