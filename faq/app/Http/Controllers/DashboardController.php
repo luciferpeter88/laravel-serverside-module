@@ -87,4 +87,8 @@ class DashboardController extends Controller
     {
         return view('dashboard.addadmin'); // Add admin page
     }
+    public function addpost()
+    {
+        return view('dashboard.addpost'); // Add post page
+    }
 }

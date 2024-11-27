@@ -15,9 +15,21 @@ Auth::routes();
 
 Route::prefix('dashboard')->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
-    Route::get('/profile', [DashboardController::class, 'profile'])->name('dashboard.profile');
-    Route::get('/posts', [DashboardController::class, 'posts'])->name('dashboard.posts');
-    Route::get('/settings', [DashboardController::class, 'settings'])->name('dashboard.settings');
+    Route::middleware(['role:user'])->group(function () {
+        Route::get('/profile', [DashboardController::class, 'profile'])->name('dashboard.profile');
+    });
+    // Route::get('/profile', [DashboardController::class, 'profile'])->name('dashboard.profile');
+    Route::middleware(['role:user'])->group(function () {
+        Route::get('/posts', [DashboardController::class, 'posts'])->name('dashboard.posts');
+    });
+    // Route::get('/posts', [DashboardController::class, 'posts'])->name('dashboard.posts');
+    // Route::get('/settings', [DashboardController::class, 'settings'])->name('dashboard.settings');
+    Route::middleware(['role:user'])->group(function () {
+        Route::get('/settings', [DashboardController::class, 'settings'])->name('dashboard.settings');
+    });
+    Route::middleware(['role:user'])->group(function () {
+        Route::get('/addpost', [DashboardController::class, 'addpost'])->name('dashboard.addpost');
+    });
     // admin
     Route::middleware(['role:admin'])->group(function () {
         Route::get('/allpost', [DashboardController::class, 'allpost'])->name('dashboard.allpost');

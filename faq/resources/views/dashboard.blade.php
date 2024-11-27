@@ -21,7 +21,7 @@
                     @if (Auth::user()->role == 'admin')
                     <x-dash-sidebar :sidebarName="['All Post', 'Add Category', 'All Users']" :routes="['dashboard.allpost', 'dashboard.addcategory', 'dashboard.allusers']" />
                     @elseif (Auth::user()->role == 'user')
-                    <x-dash-sidebar :sidebarName="['My Posts', 'Profile', 'Settings']" :routes="['dashboard.posts', 'dashboard.profile', 'dashboard.settings']" />
+                    <x-dash-sidebar :sidebarName="['My Posts', 'Add Post','Profile', 'Settings']" :routes="['dashboard.posts','dashboard.addpost' ,'dashboard.profile', 'dashboard.settings']" />
                     @else
                     <x-dash-sidebar :sidebarName="['All Members', 'Add Admin']" :routes="['dashboard.allaregisteredmembers', 'dashboard.addadmin']" />
                     @endif
