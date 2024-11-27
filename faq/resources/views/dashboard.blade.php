@@ -18,7 +18,13 @@
                     @click.outside="sidebarToggle = false"
                 >
                     <x-dash-header1 />
-                    <x-dash-sidebar />
+                    @if (Auth::user()->role == 'admin')
+                    <x-dash-sidebar :sidebarName="['All Post', 'Add Category', 'All Users']" :routes="['dashboard.allpost', 'dashboard.addcategory', 'dashboard.allusers']" />
+                    @elseif (Auth::user()->role == 'user')
+                    <x-dash-sidebar :sidebarName="['My Posts', 'Profile', 'Settings']" :routes="['dashboard.posts', 'dashboard.profile', 'dashboard.settings']" />
+                    @else
+                    <x-dash-sidebar :sidebarName="['All Members', 'Add Admin']" :routes="['dashboard.allaregisteredmembers', 'dashboard.addadmin']" />
+                    @endif
                 </aside>
                 <div class="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden">
                     <x-dash-header2 />

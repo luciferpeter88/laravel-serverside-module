@@ -37,7 +37,7 @@ Route::prefix('dashboard')->group(function () {
     Route::middleware(['role:superadmin'])->group(function () {
         Route::get('/addadmin', [DashboardController::class, 'addadmin'])->name('dashboard.addadmin');
     });
-
+    // shared
     
 });
 

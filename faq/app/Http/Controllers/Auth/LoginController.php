@@ -25,8 +25,18 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/dashboard/profile'; // Redirect to profile page after login
+    // protected $redirectTo = '/dashboard/profile'; // Redirect to profile page after login
 
+    protected function authenticated($request, $user)
+    {
+        if ($user->hasRole('admin')) {
+            return redirect()->route('dashboard.allpost');
+        }
+        if ($user->hasRole('superadmin')) {
+            return redirect()->route('dashboard.allaregisteredmembers');
+        }
+        return redirect()->route('dashboard.posts');
+    }
     /**
      * Create a new controller instance.
      *

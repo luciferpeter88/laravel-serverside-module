@@ -8,13 +8,14 @@ use Illuminate\View\Component;
 
 class Sidebar extends Component
 {
-    /**
-     * Create a new component instance.
-     */
-    public function __construct()
+    public $sidebarName;
+    public $routes;
+    public function __construct(array $sidebarName, array $routes)
     {
-        //
+        $this->sidebarName = $sidebarName;
+        $this->routes = $routes;
     }
+  
 
     /**
      * Get the view / contents that represent the component.
