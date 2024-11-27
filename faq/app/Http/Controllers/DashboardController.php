@@ -28,7 +28,8 @@ class DashboardController extends Controller
 
     public function profile()
     {
-        return view('dashboard.profile'); // Profile page
+        $user = auth()->user();
+        return view('dashboard.profile', compact('user')); // Profile page
     }
 
     public function posts()

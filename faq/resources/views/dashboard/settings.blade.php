@@ -23,8 +23,8 @@
                         </div>
                         <div class="p-7">
                             <form action="#">
-                                <div class="mb-5.5 flex flex-col gap-5.5 sm:flex-row">
-                                    <div class="w-full sm:w-1/2">
+                                <div class="mb-5.5">
+                                    <div class="w-full">
                                         <label class="mb-3 block text-sm font-medium text-white" for="fullName">Full Name</label>
                                         <div class="relative">
                                             <span class="absolute left-4.5 top-4">
@@ -54,18 +54,6 @@
                                                 value="Devid Jhon"
                                             />
                                         </div>
-                                    </div>
-
-                                    <div class="w-full sm:w-1/2">
-                                        <label class="mb-3 block text-sm font-medium text-white" for="phoneNumber">Phone Number</label>
-                                        <input
-                                            class="w-full rounded  px-4.5 py-3 font-medium  focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 text-white dark:focus:border-primary"
-                                            type="text"
-                                            name="phoneNumber"
-                                            id="phoneNumber"
-                                            placeholder="+990 3343 7865"
-                                            value="+990 3343 7865"
-                                        />
                                     </div>
                                 </div>
 
@@ -180,14 +168,6 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque posuere fe
                                     </div>
                                     <div>
                                         <span class="mb-1.5 font-medium  dark:text-white">Edit your photo</span>
-                                        <span class="flex gap-2.5">
-                                            <button class="text-sm font-medium hover:text-primary">
-                                                Delete
-                                            </button>
-                                            <button class="text-sm font-medium hover:text-primary">
-                                                Update
-                                            </button>
-                                        </span>
                                     </div>
                                 </div>
 

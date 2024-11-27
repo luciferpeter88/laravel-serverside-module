@@ -64,7 +64,8 @@
                     </div>
                     <div class="mt-4">
                         <h3 class="mb-1.5 text-2xl font-medium text-white">
-                            Judit Eisendreich
+                           {{$user->name}}
+                            {{-- Judit Eisendreich --}}
                         </h3>
 
                         <div class="mx-auto mb-5.5 mt-4.5 rounded-md w-26 border-none py-2.5 shadow-1 dark:border-strokedark dark:bg-[#37404F]">
