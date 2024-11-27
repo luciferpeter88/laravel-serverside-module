@@ -71,4 +71,20 @@ class DashboardController extends Controller
     {
         return view('dashboard.allpost'); // All post page
     }
+    public function addcategory()
+    {
+        return view('dashboard.addcategory'); // Add category page
+    }
+    public function allusers()
+    {
+        return view('dashboard.allusers'); // All users page
+    }
+    public function allaregisteredmembers()
+    {
+        return view('dashboard.allaregisteredmembers'); // All registered members page
+    }
+    public function addadmin()
+    {
+        return view('dashboard.addadmin'); // Add admin page
+    }
 }
