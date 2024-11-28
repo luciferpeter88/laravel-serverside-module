@@ -1,31 +1,16 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Dashboard\User;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class DashboardController extends Controller
+class DashboardUserController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
     public function __construct()
     {
         $this->middleware('auth');
     }
-
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
-    public function index()
-    {
-        return view('dashboard'); // Dashboard page
-    }
-
     public function profile()
     {
         $user = auth()->user();
@@ -66,27 +51,6 @@ class DashboardController extends Controller
     public function settings()
     {
         return view('dashboard.settings'); // Settings page
-    }
-
-    public function allpost()
-    {
-        return view('dashboard.allpost'); // All post page
-    }
-    public function addcategory()
-    {
-        return view('dashboard.addcategory'); // Add category page
-    }
-    public function allusers()
-    {
-        return view('dashboard.allusers'); // All users page
-    }
-    public function allaregisteredmembers()
-    {
-        return view('dashboard.allaregisteredmembers'); // All registered members page
-    }
-    public function addadmin()
-    {
-        return view('dashboard.addadmin'); // Add admin page
     }
     public function addpost()
     {

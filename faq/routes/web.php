@@ -2,7 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\WelcomeController;
-use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\Dashboard\User\DashboardUserController;
+use App\Http\Controllers\Dashboard\Admin\DashboardAdminController;
+use App\Http\Controllers\Dashboard\SuperAdmin\DashboardSuperAdminController;
+use App\Http\Controllers\Dashboard\DashboardController;
 
 
 
@@ -14,42 +17,30 @@ Auth::routes();
 
 
 Route::prefix('dashboard')->group(function () {
+    // Routes accessible to all roles
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+
+    // Routes for 'user' role
     Route::middleware(['role:user'])->group(function () {
-        Route::get('/profile', [DashboardController::class, 'profile'])->name('dashboard.profile');
-    });
-    // Route::get('/profile', [DashboardController::class, 'profile'])->name('dashboard.profile');
-    Route::middleware(['role:user'])->group(function () {
-        Route::get('/posts', [DashboardController::class, 'posts'])->name('dashboard.posts');
-    });
-    // Route::get('/posts', [DashboardController::class, 'posts'])->name('dashboard.posts');
-    // Route::get('/settings', [DashboardController::class, 'settings'])->name('dashboard.settings');
-    Route::middleware(['role:user'])->group(function () {
-        Route::get('/settings', [DashboardController::class, 'settings'])->name('dashboard.settings');
-    });
-    Route::middleware(['role:user'])->group(function () {
-        Route::get('/addpost', [DashboardController::class, 'addpost'])->name('dashboard.addpost');
-    });
-    // admin
-    Route::middleware(['role:admin'])->group(function () {
-        Route::get('/allpost', [DashboardController::class, 'allpost'])->name('dashboard.allpost');
-    });
-    Route::middleware(['role:admin'])->group(function () {
-        Route::get('/addcategory', [DashboardController::class, 'addcategory'])->name('dashboard.addcategory');
-    });
-    Route::middleware(['role:admin'])->group(function () {
-        Route::get('/allusers', [DashboardController::class, 'allusers'])->name('dashboard.allusers');
+        Route::get('/profile', [DashboardUserController::class, 'profile'])->name('dashboard.profile');
+        Route::get('/posts', [DashboardUserController::class, 'posts'])->name('dashboard.posts');
+        Route::get('/settings', [DashboardUserController::class, 'settings'])->name('dashboard.settings');
+        Route::get('/addpost', [DashboardUserController::class, 'addpost'])->name('dashboard.addpost');
     });
 
+    // Routes for 'admin' role
+    Route::middleware(['role:admin'])->group(function () {
+        Route::get('/allpost', [DashboardAdminController::class, 'allpost'])->name('dashboard.allpost');
+        Route::get('/addcategory', [DashboardAdminController::class, 'addcategory'])->name('dashboard.addcategory');
+        Route::get('/allusers', [DashboardAdminController::class, 'allusers'])->name('dashboard.allusers');
+    });
 
-    // superadmin
+    // Routes for 'superadmin' role
     Route::middleware(['role:superadmin'])->group(function () {
-        Route::get('/allaregisteredmembers', [DashboardController::class, 'allaregisteredmembers'])->name('dashboard.allaregisteredmembers');
+        Route::get('/allaregisteredmembers', [DashboardSuperAdminController::class, 'allaregisteredmembers'])->name('dashboard.allaregisteredmembers');
+        Route::get('/addadmin', [DashboardSuperAdminController::class, 'addadmin'])->name('dashboard.addadmin');
     });
-    Route::middleware(['role:superadmin'])->group(function () {
-        Route::get('/addadmin', [DashboardController::class, 'addadmin'])->name('dashboard.addadmin');
-    });
-    // shared
-    
+
+    // Shared routes can go here
 });
 
