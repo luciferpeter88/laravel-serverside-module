@@ -67,8 +67,7 @@
                                 About Me
                             </h4>
                             <p class="mt-4.5 text-sm font-normal text-gray-400">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque posuere fermentum urna, eu condimentum mauris tempus ut. Donec fermentum blandit aliquet. Etiam dictum dapibus ultricies. Sed vel aliquet
-                                libero. Nunc a augue fermentum, pharetra ligula sed, aliquam lacus.
+                                {{$user->bio}}
                             </p>
                         </div>
                     </div>
