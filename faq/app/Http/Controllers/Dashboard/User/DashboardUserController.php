@@ -85,6 +85,11 @@ class DashboardUserController extends Controller
     {
         $request->validate([
             'profilePicturePath' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ], [
+            'profilePicturePath.required' => 'Please upload a profile picture.',
+            'profilePicturePath.image' => 'The uploaded file must be an image.',
+            'profilePicturePath.mimes' => 'The profile picture must be a file of type: jpeg, png, jpg, gif, svg.',
+            'profilePicturePath.max' => 'The profile picture must not exceed 2MB.',
         ]);
     
         $user = auth()->user();

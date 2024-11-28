@@ -175,7 +175,7 @@
                             <form action="{{route('dashboard.settings.profilepicture')}}" method="POST" enctype="multipart/form-data">
                                 @csrf 
                                 <div class="mb-4 flex items-center gap-3">
-                                    <div class="h-14 w-14 rounded-full">
+                                    <div class="h-34 w-34 rounded-full">
                                         <img 
                                         src="{{ $user->profilePicturePath 
                                                 ? asset('storage/' . $user->profilePicturePath) 
