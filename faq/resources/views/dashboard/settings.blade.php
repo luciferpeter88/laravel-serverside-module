@@ -25,13 +25,13 @@
                                     {{ session('success') }}
                                 </div>
                             @endif
-                        @if($errors->any())
-                            <div class="alert alert-danger">
-                                    @foreach($errors->all() as $error)
-                                        <div>{{ $error }}</div>
-                                    @endforeach
-                            </div>
-                        @endif
+                            @if($errors->any())
+                                <div class="alert alert-danger">
+                                        @foreach($errors->all() as $error)
+                                            <div>{{ $error }}</div>
+                                        @endforeach
+                                </div>
+                            @endif
                         </div>
                         <div class="p-7">
                             <form action="{{ route('dashboard.settings.update') }}" method="POST">

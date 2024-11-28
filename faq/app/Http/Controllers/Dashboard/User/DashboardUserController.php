@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Dashboard\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use App\Models\Category;
+use App\Models\Post;
 
 class DashboardUserController extends Controller
 {
@@ -140,13 +142,35 @@ class DashboardUserController extends Controller
         return redirect()->route('dashboard.profile')->with('success', 'Background picture updated successfully!');
     }
 
-
-
-
-
-
-    public function addpost()
+    public function createpost()
     {
-        return view('dashboard.addpost'); // Add post page
+        $categories = Category::all();
+        return view('dashboard.addpost', compact('categories')); // Add post page
     }
+public function storepost(Request $request)
+{
+    $request->validate([
+        'title' => 'required|string|max:255',
+        'category_id' => 'required|exists:categories,id',
+        'content' => 'required|string',
+    ], [
+        'title.required' => 'Title is required.',
+        'title.string' => 'Title must be a valid string.',
+        'title.max' => 'Title must not exceed 255 characters.',
+        'category_id.required' => 'Category is required.',
+        'category_id.exists' => 'The selected category is invalid',
+        'content.required' => 'Content is required.',
+        'content.string' => 'Content must be a valid string.',
+    ]);
+    // Create a new post, associating it with the currently authenticated user
+    // user_id is the foreign key in the posts table
+    // category_id is the foreign key in the posts table
+    Post::create([
+        'title' => $request->title,
+        'content' => $request->content,
+        'user_id' =>  auth()->id(), 
+        'category_id' => $request->category_id,
+    ]);
+    return redirect()->route('dashboard.addpost')->with('success', 'Post created successfully!');
+}
 }

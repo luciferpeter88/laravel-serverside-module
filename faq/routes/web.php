@@ -30,7 +30,8 @@ Route::prefix('dashboard')->group(function () {
         Route::post('/settings/profilepicture', [DashboardUserController::class, 'updateProfilePicture'])->name('dashboard.settings.profilepicture');
         Route::post('settings/backgroundpicture', [DashboardUserController::class, 'updateBackgroundPicture'])->name('dashboard.settings.backgroundpicture');
         // end of settings
-        Route::get('/addpost', [DashboardUserController::class, 'addpost'])->name('dashboard.addpost');
+        Route::get('/addpost', [DashboardUserController::class, 'createpost'])->name('dashboard.addpost');
+        Route::post('/addpost', [DashboardUserController::class, 'storepost'])->name('dashboard.storepost');
     });
 
     // Routes for 'admin' role
