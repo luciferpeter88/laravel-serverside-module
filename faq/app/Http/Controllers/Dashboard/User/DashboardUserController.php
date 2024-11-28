@@ -48,7 +48,8 @@ class DashboardUserController extends Controller
                 'answers' => 7,
             ],
         ];
-        return view('dashboard.posts',compact('questions')); // Posts page
+        $myposts = Post::where('user_id', auth()->id())->get();
+        return view('dashboard.posts',compact('myposts')); // Posts page
     }
 
     public function settings()
