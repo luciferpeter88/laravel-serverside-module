@@ -172,18 +172,22 @@
                             </h3>
                         </div>
                         <div class="p-7">
-                            <form action="#">
+                            <form action="{{route('dashboard.settings.profilepicture')}}" method="POST" enctype="multipart/form-data">
+                                @csrf 
                                 <div class="mb-4 flex items-center gap-3">
                                     <div class="h-14 w-14 rounded-full">
-                                        <img src="./images/user/user-03.png" alt="User" />
-                                    </div>
+                                        <img 
+                                        src="{{ $user->profilePicturePath 
+                                                ? asset('storage/' . $user->profilePicturePath) 
+                                                : asset('images/default-profile.png') }}" 
+                                        alt="User" />                                    </div>
                                     <div>
                                         <span class="mb-1.5 font-medium  dark:text-white">Edit your photo</span>
                                     </div>
                                 </div>
 
                                 <div id="FileUpload" class="relative mb-5.5 block w-full cursor-pointer appearance-none rounded border border-dashed border-primary bg-gray px-4 py-4 dark:bg-meta-4 sm:py-7.5">
-                                    <input type="file" accept="image/*" class="absolute inset-0 z-50 m-0 h-full w-full cursor-pointer p-0 opacity-0 outline-none" />
+                                    <input type="file" accept="image/*" class="absolute inset-0 z-50 m-0 h-full w-full cursor-pointer p-0 opacity-0 outline-none" name="profilePicturePath" />
                                     <div class="flex flex-col items-center justify-center space-y-3">
                                         <span class="flex h-10 w-10 items-center justify-center rounded-full border border-stroke bg-white dark:border-strokedark dark:bg-boxdark">
                                             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">

@@ -24,8 +24,11 @@ Route::prefix('dashboard')->group(function () {
     Route::middleware(['role:user'])->group(function () {
         Route::get('/profile', [DashboardUserController::class, 'profile'])->name('dashboard.profile');
         Route::get('/posts', [DashboardUserController::class, 'posts'])->name('dashboard.posts');
+        // settings
         Route::get('/settings', [DashboardUserController::class, 'settings'])->name('dashboard.settings');
         Route::post('/settings', [DashboardUserController::class, 'updateSettings'])->name('dashboard.settings.update');
+        Route::post('/settings/profilepicture', [DashboardUserController::class, 'updateProfilePicture'])->name('dashboard.settings.profilepicture');
+        // end of settings
         Route::get('/addpost', [DashboardUserController::class, 'addpost'])->name('dashboard.addpost');
     });
 

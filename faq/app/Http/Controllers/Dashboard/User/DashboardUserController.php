@@ -81,6 +81,30 @@ class DashboardUserController extends Controller
         $user->update($validatedData);
         return redirect()->route('dashboard.settings')->with('success', 'Settings updated successfully!');
     }
+    public function updateProfilePicture(Request $request)
+    {
+        $request->validate([
+            'profilePicturePath' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+    
+        $user = auth()->user();
+    
+        // Delete the old profile picture if it exists
+        if ($user->profilePicturePath && file_exists(public_path('storage/' . $user->profilePicturePath))) {
+            unlink(public_path('storage/' . $user->profilePicturePath));
+        }
+    
+        // Store the new profile picture
+        $profilePicture = $request->file('profilePicturePath');
+        $profilePicturePath = $profilePicture->store('profile_pictures', 'public'); // Use a meaningful folder name
+    
+        // Update the user's profile picture in the database
+        $user->update([
+            'profilePicturePath' => $profilePicturePath,
+        ]);
+    
+        return redirect()->route('dashboard.settings')->with('success', 'Profile picture updated successfully!');
+    }
     public function addpost()
     {
         return view('dashboard.addpost'); // Add post page
