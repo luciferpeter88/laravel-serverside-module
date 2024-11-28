@@ -15,8 +15,22 @@
 
             <!-- ====== Profile Section Start -->
             <div class="overflow-hidden rounded-sm bg-[rgb(36,48,63)] shadow-default">
+                @if(session('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                @endif
+                @if($errors->any())
+                    <div class="alert alert-danger">
+                            @foreach($errors->all() as $error)
+                                <div>{{ $error }}</div>
+                            @endforeach
+                    </div>
+                @endif
                 <div class="relative z-20 h-35 md:h-65">
-                    <img src="./images/cover/cover-01.png" alt="profile cover" class="h-full w-full rounded-tl-sm rounded-tr-sm object-cover object-center" />
+                    <img src="{{ $user->profilePicturePath 
+                    ? asset('storage/' . $user->backgroundPicturePath) 
+                    : asset('images/default-profile.png') }}" alt="profile cover" class="h-full w-full rounded-tl-sm rounded-tr-sm object-cover object-center" />
                     <div class="absolute bottom-1 right-1 z-10 xsm:bottom-4 xsm:right-4">
                      <x-svg.edit />
                     </div>

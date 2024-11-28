@@ -28,6 +28,7 @@ Route::prefix('dashboard')->group(function () {
         Route::get('/settings', [DashboardUserController::class, 'settings'])->name('dashboard.settings');
         Route::post('/settings', [DashboardUserController::class, 'updateSettings'])->name('dashboard.settings.update');
         Route::post('/settings/profilepicture', [DashboardUserController::class, 'updateProfilePicture'])->name('dashboard.settings.profilepicture');
+        Route::post('settings/backgroundpicture', [DashboardUserController::class, 'updateBackgroundPicture'])->name('dashboard.settings.backgroundpicture');
         // end of settings
         Route::get('/addpost', [DashboardUserController::class, 'addpost'])->name('dashboard.addpost');
     });

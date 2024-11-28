@@ -110,6 +110,41 @@ class DashboardUserController extends Controller
     
         return redirect()->route('dashboard.settings')->with('success', 'Profile picture updated successfully!');
     }
+    public function updateBackgroundPicture(Request $request)
+    {
+        $request->validate([
+            'backgroundPicturePath' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ], [
+            'backgroundPicturePath.required' => 'Please upload a background picture.',
+            'backgroundPicturePath.image' => 'The uploaded file must be an image.',
+            'backgroundPicturePath.mimes' => 'The background picture must be a file of type: jpeg, png, jpg, gif, svg.',
+            'backgroundPicturePath.max' => 'The background picture must not exceed 2MB.',
+        ]);
+    
+        $user = auth()->user();
+    
+        // Delete the old background picture if it exists
+        if ($user->backgroundPicturePath && file_exists(public_path('storage/' . $user->backgroundPicturePath))) {
+            unlink(public_path('storage/' . $user->backgroundPicturePath));
+        }
+    
+        // Store the new background picture
+        $backgroundPicture = $request->file('backgroundPicturePath');
+        $backgroundPicturePath = $backgroundPicture->store('background_pictures', 'public'); // Use a meaningful folder name
+    
+        // Update the user's background picture in the database
+        $user->update([
+            'backgroundPicturePath' => $backgroundPicturePath,
+        ]);
+    
+        return redirect()->route('dashboard.profile')->with('success', 'Background picture updated successfully!');
+    }
+
+
+
+
+
+
     public function addpost()
     {
         return view('dashboard.addpost'); // Add post page

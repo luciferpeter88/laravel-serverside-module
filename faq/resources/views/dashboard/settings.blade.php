@@ -180,7 +180,8 @@
                                         src="{{ $user->profilePicturePath 
                                                 ? asset('storage/' . $user->profilePicturePath) 
                                                 : asset('images/default-profile.png') }}" 
-                                        alt="User" />                                    </div>
+                                        alt="User" />
+                                    </div>
                                     <div>
                                         <span class="mb-1.5 font-medium  dark:text-white">Edit your photo</span>
                                     </div>
