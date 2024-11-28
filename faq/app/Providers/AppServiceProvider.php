@@ -25,6 +25,7 @@ class AppServiceProvider extends ServiceProvider
         Blade::component('components.dashboard.sidebar', 'dash-sidebar');
         Blade::component('components.dashboard.header1', 'dash-header1');
         Blade::component('components.dashboard.header2', 'dash-header2');
+        Blade::component('components.svg.edit', 'svg-edit');
 
        
     }
