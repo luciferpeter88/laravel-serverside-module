@@ -25,6 +25,7 @@ Route::prefix('dashboard')->group(function () {
         Route::get('/profile', [DashboardUserController::class, 'profile'])->name('dashboard.profile');
         Route::get('/posts', [DashboardUserController::class, 'posts'])->name('dashboard.posts');
         Route::get('/settings', [DashboardUserController::class, 'settings'])->name('dashboard.settings');
+        Route::post('/settings', [DashboardUserController::class, 'updateSettings'])->name('dashboard.settings.update');
         Route::get('/addpost', [DashboardUserController::class, 'addpost'])->name('dashboard.addpost');
     });
 

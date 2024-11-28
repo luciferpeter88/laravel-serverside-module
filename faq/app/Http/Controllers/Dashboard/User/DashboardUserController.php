@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Dashboard\User;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class DashboardUserController extends Controller
 {
@@ -50,7 +51,35 @@ class DashboardUserController extends Controller
 
     public function settings()
     {
-        return view('dashboard.settings'); // Settings page
+        $user = auth()->user(); // Get the currently authenticated user
+        return view('dashboard.settings', compact('user')); // Settings page
+    }
+    public function updateSettings(Request $request)
+    {
+        
+        $validatedData = $request->validate([
+            'username' => [
+                'required',
+                'string',
+                'max:255',
+                Rule::unique('users', 'username')->ignore(auth()->id()), // Ignore the current user for unique validation
+            ],
+            'bio' => 'nullable|string|max:1000', 
+            'name' => 'required|string|max:255', 
+        ], [
+            // Custom error messages
+            'username.required' => 'Username is required.',
+            'username.unique' => 'This username is already taken.',
+            'bio.string' => 'Bio must be a valid string.',
+            'name.required' => 'Name is required.',
+        ]);
+    
+        // Get the currently logged-in user
+        $user = auth()->user();
+    
+        // Update the user's details
+        $user->update($validatedData);
+        return redirect()->route('dashboard.settings')->with('success', 'Settings updated successfully!');
     }
     public function addpost()
     {

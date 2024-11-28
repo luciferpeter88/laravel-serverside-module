@@ -20,12 +20,25 @@
                             <h3 class="font-medium text-white">
                                 Personal Information
                             </h3>
+                            @if(session('success'))
+                                <div class="alert alert-success">
+                                    {{ session('success') }}
+                                </div>
+                            @endif
+                        @if($errors->any())
+                            <div class="alert alert-danger">
+                                    @foreach($errors->all() as $error)
+                                        <div>{{ $error }}</div>
+                                    @endforeach
+                            </div>
+                        @endif
                         </div>
                         <div class="p-7">
-                            <form action="#">
+                            <form action="{{ route('dashboard.settings.update') }}" method="POST">
+                                @csrf 
                                 <div class="mb-5.5">
                                     <div class="w-full">
-                                        <label class="mb-3 block text-sm font-medium text-white" for="fullName">Full Name</label>
+                                        <label class="mb-3 block text-sm font-medium text-white" for="name">Full Name</label>
                                         <div class="relative">
                                             <span class="absolute left-4.5 top-4">
                                                 <svg class="fill-current" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -48,10 +61,10 @@
                                             <input
                                                 class="w-full rounded  bg-gray py-3 pl-11.5 pr-4.5 font-medium  focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 text-white dark:focus:border-primary"
                                                 type="text"
-                                                name="fullName"
-                                                id="fullName"
+                                                name="name"
+                                                id="name"
                                                 placeholder="Devid Jhon"
-                                                value="Devid Jhon"
+                                                value="{{ old('name', $user->name) }}"
                                             />
                                         </div>
                                     </div>
@@ -84,25 +97,25 @@
                                             name="emailAddress"
                                             id="emailAddress"
                                             placeholder="devidjond45@gmail.com"
-                                            value="devidjond45@gmail.com"
+                                            value="{{ old('email', $user->email) }}"
+                                            readonly
                                         />
                                     </div>
                                 </div>
 
                                 <div class="mb-5.5">
-                                    <label class="mb-3 block text-sm font-medium text-white" for="Username">Username</label>
+                                    <label class="mb-3 block text-sm font-medium text-white" for="username">Username</label>
                                     <input
                                         class="w-full rounded  bg-gray px-4.5 py-3 font-medium  focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 text-white dark:focus:border-primary"
                                         type="text"
-                                        name="Username"
-                                        id="Username"
+                                        name="username"
+                                        id="username"
                                         placeholder="devidjhon24"
-                                        value="devidjhon24"
-                                    />
+                                        value="{{ old('username', $user->username) }}"                                    />
                                 </div>
 
                                 <div class="mb-5.5">
-                                    <label class="mb-3 block text-sm font-medium  text-white" for="Username">BIO</label>
+                                    <label class="mb-3 block text-sm font-medium  text-white" for="bio">BIO</label>
                                     <div class="relative">
                                         <span class="absolute left-4.5 top-4">
                                             <svg class="fill-current" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -134,9 +147,7 @@
                                             id="bio"
                                             rows="6"
                                             placeholder="Write your bio here"
-                                        >
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque posuere fermentum urna, eu condimentum mauris tempus ut. Donec fermentum blandit aliquet.
-
+                                        >{{ old('bio', $user->bio) }}
                                         </textarea>
                                     </div>
                                 </div>
