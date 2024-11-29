@@ -2,22 +2,21 @@
 
 @section('content')
 <div class="container mx-auto">
+    <x-feedback />
     <!-- Post Title Section -->
-    <div class="flex flex-row justify-between mb-6">
-        <h2 class="text-[1.5rem] font-bold text-white">{{ $post->title }}</h2>
-        <p class="text-sm text-gray-400">Posted by <span class="text-white">{{ $post->user->username }}</span> on {{ $post->created_at->format('Y-m-d H:i') }}</p>
-    </div>
-
-    <!-- Post Content -->
-    <div class="bg-[rgb(36,48,63)] shadow rounded-lg p-6">
+    <div class="bg-[rgb(36,48,63)] shadow rounded-lg p-6 relative">
+        <div class="flex items-center justify-between"> 
+            <h2 class="text-[1.5rem] font-bold text-white">{{ $post->title }}</h2>
+            <p class="text-sm text-gray-400">Posted by <span class="text-white">{{ $post->user->username }}</span> on {{ $post->created_at->format('Y-m-d H:i') }}</p>
+        </div>
         <div class="text-gray-300 leading-7 text-md">
-            {{ $post->content }}
+            <h3 class="text-sm mt-4"> {{ $post->content }}</h3>
+            <div class="h-12 w-12 rounded-full bg-boxdark-2  flex justify-center items-center text-white absolute right-2 bottom-2">{{ $post->comments->count() }} </div>
         </div>
     </div>
 
     <!-- Comments Section -->
     <div class="mt-8">
-        <h3 class="text-[1.25rem] font-bold text-white text-right">Comments ({{ $post->comments->count() }})</h3>
         <div class="rounded-lg mt-4">
             @forelse ($post->comments as $comment)
                 <div class="mb-4 bg-[rgb(36,48,63)] p-4">
@@ -34,7 +33,15 @@
                             <button type="submit" class="text-white px-3 py-1 rounded-md bg-red-500">Delete</button>
                         </form>
                     </div>
-                @endif
+                    @elseif(auth()->user()->role === 'admin' || auth()->user()->role === 'superadmin')
+                    <div class="flex gap-x-2 mt-2 justify-end">
+                        <form action="{{ route('comment.destroy', $comment->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this comment?');">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="text-white px-3 py-1 rounded-md bg-red-500">Delete</button>
+                        </form>
+                    </div>
+                    @endif
                 </div>
             @empty
                 <p class="text-gray-500">No comments yet. Be the first to comment!</p>

@@ -28,10 +28,15 @@ Route::middleware(['role:user'])->group(function () {
     Route::put('/comment/{id}', [CommentController::class, 'update'])->name('comment.update');
 
     // Delete a comment
-    Route::delete('/comment/{id}', [CommentController::class, 'destroy'])->name('comment.destroy');
+    // Route::delete('/comment/{id}', [CommentController::class, 'destroy'])->name('comment.destroy');
 
 });
 
+Route::middleware(['role:user,admin,superadmin'])->group(function () {
+    // Create a post
+    Route::delete('/comment/{id}', [CommentController::class, 'destroy'])->name('comment.destroy');
+
+});
 
 Auth::routes();
 

@@ -64,13 +64,15 @@ class CommentController extends Controller
     public function destroy($id)
     {
         $comment = Comment::findOrFail($id);
-
-        if ($comment->user_id !== auth()->id()) {
+    
+        // Check if the user is the owner of the comment or has a specific role
+        if ($comment->user_id !== auth()->id() && !in_array(auth()->user()->role, ['admin', 'superadmin'])) {
             abort(403, 'Unauthorized action.');
         }
-
+    
         $comment->delete();
-
+    
         return redirect()->back()->with('success', 'Comment deleted successfully!');
     }
+    
 }
