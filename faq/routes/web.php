@@ -11,6 +11,7 @@ use App\Http\Controllers\Dashboard\DashboardController;
 
 
 Route::get('/', [WelcomeController::class, 'index']);
+// Route::get('/{category}/{pagenum}', [YourController::class, 'show']);
 
 Auth::routes();
 

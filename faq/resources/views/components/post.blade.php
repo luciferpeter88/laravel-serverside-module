@@ -6,11 +6,11 @@
 
     <!-- Post Details -->
     <p class="text-gray-300 text-sm mt-auto">
-        Kategória: <span class="font-semibold">{{ $category }}</span> | 
-        Létrehozta: {{ $user }} | 
+        Category: <span class="font-semibold">{{ $category }}</span> | 
+        Created: {{ $user }} | 
         {{ $createdAt }}
     </p>
 
     <!-- Answer Count -->
-    <p class="text-gray-400 mt-auto">Válaszok: {{ $answers }}</p>
+    <p class="text-gray-400 mt-auto">Answers: {{ $answers }}</p>
 </div>
