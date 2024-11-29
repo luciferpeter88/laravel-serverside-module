@@ -7,11 +7,13 @@ use App\Http\Controllers\Dashboard\Admin\DashboardAdminController;
 use App\Http\Controllers\Dashboard\SuperAdmin\DashboardSuperAdminController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\CategoryPageController;
+use App\Http\Controllers\PostController;
 
 
 
 
 Route::get('/', [WelcomeController::class, 'index']);
+Route::get('/post/{id}', [PostController::class, 'show'])->where('id', '[0-9]+');
 Route::get('/posts/{category}/{pagenum}', [CategoryPageController::class, 'show']);
 
 Auth::routes();

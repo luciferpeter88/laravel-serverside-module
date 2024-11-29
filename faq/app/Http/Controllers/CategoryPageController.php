@@ -36,7 +36,7 @@ class CategoryPageController extends Controller
         ->take($postsPerPage)
         ->get();
 
-        return view('showposts', [
+        return view('post.showposts', [
             'category' => $category,
             'posts' => $posts,
             'currentPage' => $pagenum,

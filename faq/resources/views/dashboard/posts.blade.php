@@ -14,7 +14,8 @@
                     :category="$post->category->name" 
                     :user="$post->user->username" 
                     :createdAt="$post->created_at->format('d M Y')" 
-                    :answers="$post->answers_count ?? 0" 
+                    :answers="$post->answers_count ?? 0"
+                    :route="'/post/' . $post->id"
                 />
             @endforeach
         @endif

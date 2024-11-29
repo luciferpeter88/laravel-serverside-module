@@ -8,6 +8,7 @@
     <div class="flex flex-col justify-between  mt-4">
             <section class="grid grid-cols-1 xl:grid-cols-2 gap-3">
                 @foreach ($posts as $post)
+               
                     <div class="bg-[rgb(36,48,63)] shadow rounded-lg p-4 flex flex-col gap-y-3">
                         <x-post 
                             :title="$post->title" 
@@ -15,7 +16,9 @@
                             :user="$post->user->name" 
                             :createdAt="$post->created_at->format('Y-m-d H:i')" 
                             :answers="$post->answers_count" 
+                            :route="'/post/' . $post->id"
                         />
+                        </a>
                     </div>
                     @endforeach
             </section>

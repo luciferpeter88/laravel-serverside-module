@@ -29,4 +29,8 @@ class Post extends Model
         // in the post table the category_id column is the foreign key that references the id column in the categories table like this:
         return $this->belongsTo(Category::class);
     }
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
 }

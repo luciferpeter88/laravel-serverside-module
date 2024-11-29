@@ -55,5 +55,9 @@ class User extends Authenticatable
     {
         return $this->role === $role;
     }
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
 
 }

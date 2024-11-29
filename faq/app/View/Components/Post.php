@@ -13,14 +13,16 @@ class Post extends Component
     public $user;
     public $createdAt;
     public $answers;
+    public $route;
 
-    public function __construct($title, $category, $user, $createdAt, $answers)
+    public function __construct($title, $category, $user, $createdAt, $answers, $route)
     {
         $this->title = $title;
         $this->category = $category;
         $this->user = $user;
         $this->createdAt = $createdAt;
         $this->answers = $answers;
+        $this->route = $route;
     }
 
     /**

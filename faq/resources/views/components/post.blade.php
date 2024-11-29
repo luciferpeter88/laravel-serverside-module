@@ -1,6 +1,6 @@
 <div class="bg-boxdark-2 shadow rounded-lg px-4  flex flex-col h-40 justify-center">
     <!-- Post Title -->
-    <a href="#" class="text-lg font-bold text-blue-500 no-underline hover:underline mt-auto pt-2">
+    <a href={{$route}} class="text-lg font-bold text-blue-500 no-underline hover:underline mt-auto pt-2">
         {{ $title }}
     </a>
 
