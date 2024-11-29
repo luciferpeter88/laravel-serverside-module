@@ -10,24 +10,34 @@
 
     <!-- Post Content -->
     <div class="bg-[rgb(36,48,63)] shadow rounded-lg p-6">
-        <div class="text-gray-300 leading-7">
+        <div class="text-gray-300 leading-7 text-md">
             {{ $post->content }}
         </div>
     </div>
 
     <!-- Comments Section -->
     <div class="mt-8">
-        <h3 class="text-[1.25rem] font-bold text-white">Comments ({{ $post->comments->count() }})</h3>
-        <div class="bg-[rgb(36,48,63)] shadow rounded-lg p-6 mt-4">
+        <h3 class="text-[1.25rem] font-bold text-white text-right">Comments ({{ $post->comments->count() }})</h3>
+        <div class="rounded-lg mt-4">
             @forelse ($post->comments as $comment)
-                <div class="mb-6 border-b border-gray-600 pb-4">
-                    <p class="text-sm text-gray-400">
-                        <span class="text-white">{{ $comment->user->name }}</span> - {{ $comment->created_at->format('Y-m-d H:i') }}
+                <div class="mb-4 bg-[rgb(36,48,63)] p-4">
+                    <p class="text-sm text-gray-500">
+                        {{ $comment->user->username }} - {{ $comment->created_at->format('Y-m-d H:i') }}
                     </p>
-                    <p class="text-gray-300 mt-2">{{ $comment->content }}</p>
+                    <p class="text-gray-200">{{ $comment->content }}</p>
+                    @if (auth()->id() === $comment->user_id)
+                    <div class="flex gap-x-2 mt-2">
+                        <a href="{{ route('comment.edit', $comment->id) }}" class="text-blue-500 hover:underline">Edit</a>
+                        <form action="{{ route('comment.destroy', $comment->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this comment?');">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="text-red-500 hover:underline">Delete</button>
+                        </form>
+                    </div>
+                @endif
                 </div>
             @empty
-                <p class="text-gray-400">No comments yet. Be the first to comment!</p>
+                <p class="text-gray-500">No comments yet. Be the first to comment!</p>
             @endforelse
         </div>
     </div>

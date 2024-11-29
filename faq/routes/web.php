@@ -8,13 +8,30 @@ use App\Http\Controllers\Dashboard\SuperAdmin\DashboardSuperAdminController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\CategoryPageController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\CommentController;
 
 
 
 
 Route::get('/', [WelcomeController::class, 'index']);
-Route::get('/post/{id}', [PostController::class, 'show'])->where('id', '[0-9]+');
+Route::get('/post/{id}', [PostController::class, 'show'])->where('id', '[0-9]+')->name('post.singlepost');
 Route::get('/posts/{category}/{pagenum}', [CategoryPageController::class, 'show']);
+
+Route::middleware(['role:user'])->group(function () {
+    // Create a comment
+    Route::post('/post/{id}/comment', [CommentController::class, 'store'])->name('comment.store');
+
+    // Edit a comment
+    Route::get('/comment/{id}/edit', [CommentController::class, 'edit'])->name('comment.edit');
+
+    // Update a comment
+    Route::put('/comment/{id}', [CommentController::class, 'update'])->name('comment.update');
+
+    // Delete a comment
+    Route::delete('/comment/{id}', [CommentController::class, 'destroy'])->name('comment.destroy');
+
+});
+
 
 Auth::routes();
 
