@@ -26,12 +26,12 @@
                     </p>
                     <p class="text-gray-200">{{ $comment->content }}</p>
                     @if (auth()->id() === $comment->user_id)
-                    <div class="flex gap-x-2 mt-2">
-                        <a href="{{ route('comment.edit', $comment->id) }}" class="text-blue-500 hover:underline">Edit</a>
+                    <div class="flex gap-x-2 mt-2 justify-end">
+                        <a href="{{ route('comment.edit', $comment->id) }}" class="text-white no-underline bg-blue-500 px-3 py-1 rounded-md">Edit</a>
                         <form action="{{ route('comment.destroy', $comment->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this comment?');">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="text-red-500 hover:underline">Delete</button>
+                            <button type="submit" class="text-white px-3 py-1 rounded-md bg-red-500">Delete</button>
                         </form>
                     </div>
                 @endif
