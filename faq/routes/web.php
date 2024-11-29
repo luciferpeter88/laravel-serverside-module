@@ -6,12 +6,13 @@ use App\Http\Controllers\Dashboard\User\DashboardUserController;
 use App\Http\Controllers\Dashboard\Admin\DashboardAdminController;
 use App\Http\Controllers\Dashboard\SuperAdmin\DashboardSuperAdminController;
 use App\Http\Controllers\Dashboard\DashboardController;
+use App\Http\Controllers\CategoryPageController;
 
 
 
 
 Route::get('/', [WelcomeController::class, 'index']);
-// Route::get('/{category}/{pagenum}', [YourController::class, 'show']);
+Route::get('/posts/{category}/{pagenum}', [CategoryPageController::class, 'show']);
 
 Auth::routes();
 
