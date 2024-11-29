@@ -31,7 +31,7 @@ class CategoryPageController extends Controller
             abort(404, 'Page number out of range.');
         }
         $posts = $category->posts()
-        ->orderBy('created_at', 'desc') // Sort posts, optional
+        ->orderBy('created_at', 'desc') 
         ->skip(($pagenum - 1) * $postsPerPage)
         ->take($postsPerPage)
         ->get();

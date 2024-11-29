@@ -44,6 +44,7 @@
 
     <!-- Add Comment Section -->
     @auth
+    @if(auth()->user()->role === 'user')
         <div class="mt-6">
             <h4 class="text-[1rem] font-bold text-white">Add a Comment</h4>
             <form action="/post/{{ $post->id }}/comment" method="POST" class="mt-4">
@@ -54,6 +55,7 @@
                 </button>
             </form>
         </div>
+    @endif
     @else
         <div class="mt-6">
             <p class="text-gray-400">Please <a href="/login" class="text-blue-500 hover:underline">log in</a> to leave a comment.</p>
