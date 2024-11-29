@@ -17,7 +17,10 @@ class DashboardUserController extends Controller
     public function profile()
     {
         $user = auth()->user();
-        return view('dashboard.profile', compact('user')); // Profile page
+        // Get the total number of posts created by the user
+        $postCount = Post::where('user_id', $user->id)->count();
+
+        return view('dashboard.profile', compact('user', 'postCount')); // Profile page
     }
 
     public function posts()

@@ -40,7 +40,7 @@
                         <div class="mx-auto mb-5.5 mt-4.5 rounded-md w-26 border-none py-2.5 shadow-1 dark:border-strokedark dark:bg-[#37404F]">
                             <div class="flex flex-col items-center justify-center gap-x-2 xsm:flex-row">
                              {{-- count the number of posts --}}
-                                <span class="font-semibold text-white">2</span>
+                                <span class="font-semibold text-white">{{$postCount}}</span>
                                 <span class="text-sm">Posts</span>
                             </div>
                         </div>
