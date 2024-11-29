@@ -12,9 +12,8 @@ class PostController extends Controller
     {
         // Fetch the post by its ID along with related comments and their users
         $post = Post::with(['comments.user'])->findOrFail($id);
-
         // Pass the post and its comments to the view
-        return view('post.singlepost', compact('post'));
+        return view('post.singlepost', compact('post', ));
     }
     public function store(Request $request, $postId)
     {

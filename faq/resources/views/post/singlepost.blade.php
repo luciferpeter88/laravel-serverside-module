@@ -19,10 +19,15 @@
     <div class="mt-8">
         <div class="rounded-lg mt-4">
             @forelse ($post->comments as $comment)
+            {{-- Create a white tailwind line --}}
+            <div class="h-[0.5px] bg-white"></div>
                 <div class="mb-4 bg-[rgb(36,48,63)] p-4">
+                   <div class="flex justify-between"> 
                     <p class="text-sm text-gray-500">
-                        {{ $comment->user->username }} - {{ $comment->created_at->format('Y-m-d H:i') }}
+                        {{ $comment->user->username }}
                     </p>
+                    <p class="text-sm text-gray-500"> {{ $comment->created_at->format('Y-m-d H:i') }}</p>
+                   </div>
                     <p class="text-gray-200">{{ $comment->content }}</p>
                     @if (auth()->id() === $comment->user_id)
                     <div class="flex gap-x-2 mt-2 justify-end">
