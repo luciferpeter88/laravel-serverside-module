@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Comment;
-
+use App\Models\User;
 class PostController extends Controller
 {
     public function show($id)
@@ -13,7 +13,7 @@ class PostController extends Controller
         // Fetch the post by its ID along with related comments and their users
         $post = Post::with(['comments.user'])->findOrFail($id);
         // Pass the post and its comments to the view
-        return view('post.singlepost', compact('post', ));
+        return view('post.singlepost', compact('post',));
     }
     public function store(Request $request, $postId)
     {
@@ -28,7 +28,7 @@ class PostController extends Controller
         // Create the comment
         Comment::create([
             'post_id' => $post->id,
-            'user_id' => auth()->id(), // Assumes user is logged in
+            'user_id' => auth()->id(), 
             'content' => $request->input('content'),
         ]);
 

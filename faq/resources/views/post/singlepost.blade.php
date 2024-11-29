@@ -22,6 +22,7 @@
             @forelse ($post->comments as $comment)
             {{-- Create a white tailwind line --}}
             <div class="h-[3px] bg-[rgb(36,48,63)] rounded-full"></div>
+            <img src="{{asset('storage/' . auth()->user()->profilePicturePath) }}" alt="profile picture" class="w-10 h-10 rounded-full mt-4">
                 <div class="mb-4  p-4">
                    <div class="flex justify-between"> 
                     <p class="text-md text-white">
