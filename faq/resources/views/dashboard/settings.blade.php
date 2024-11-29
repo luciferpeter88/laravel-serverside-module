@@ -20,18 +20,7 @@
                             <h3 class="font-medium text-white">
                                 Personal Information
                             </h3>
-                            @if(session('success'))
-                                <div class="alert alert-success">
-                                    {{ session('success') }}
-                                </div>
-                            @endif
-                            @if($errors->any())
-                                <div class="alert alert-danger">
-                                        @foreach($errors->all() as $error)
-                                            <div>{{ $error }}</div>
-                                        @endforeach
-                                </div>
-                            @endif
+                            <x-feedback />
                         </div>
                         <div class="p-7">
                             <form action="{{ route('dashboard.settings.update') }}" method="POST">
@@ -153,7 +142,7 @@
                                 </div>
 
                                 <div class="flex justify-end gap-4.5">
-                                    <button class="flex justify-center rounded border border-stroke px-6 py-2 font-medium  hover:shadow-1 dark:border-strokedark dark:text-white" type="submit">
+                                    <button class="flex justify-center rounded border border-stroke px-6 py-2 font-medium  hover:shadow-1 dark:border-strokedark dark:text-white" type="reset">
                                         Cancel
                                     </button>
                                     <button class="flex justify-center rounded bg-primary px-6 py-2 font-medium text-gray hover:bg-opacity-90" type="submit">
@@ -225,7 +214,7 @@
                                 </div>
 
                                 <div class="flex justify-end gap-4.5">
-                                    <button class="flex justify-center rounded border border-stroke px-6 py-2 font-medium  hover:shadow-1 dark:border-strokedark dark:text-white" type="submit">
+                                    <button class="flex justify-center rounded border border-stroke px-6 py-2 font-medium  hover:shadow-1 dark:border-strokedark dark:text-white" type="reset" >
                                         Cancel
                                     </button>
                                     <button class="flex justify-center rounded bg-primary px-6 py-2 font-medium text-gray hover:bg-opacity-90" type="submit">
