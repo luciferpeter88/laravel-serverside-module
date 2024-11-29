@@ -15,18 +15,7 @@
 
             <!-- ====== Profile Section Start -->
             <div class="overflow-hidden rounded-sm bg-[rgb(36,48,63)] shadow-default">
-                @if(session('success'))
-                    <div class="alert alert-success">
-                        {{ session('success') }}
-                    </div>
-                @endif
-                @if($errors->any())
-                    <div class="alert alert-danger">
-                            @foreach($errors->all() as $error)
-                                <div>{{ $error }}</div>
-                            @endforeach
-                    </div>
-                @endif
+               <x-feedback />
                 <div class="relative z-20 h-35 md:h-65">
                     <img src="{{ $user->profilePicturePath 
                     ? asset('storage/' . $user->backgroundPicturePath) 
@@ -50,7 +39,8 @@
                         </h3>
                         <div class="mx-auto mb-5.5 mt-4.5 rounded-md w-26 border-none py-2.5 shadow-1 dark:border-strokedark dark:bg-[#37404F]">
                             <div class="flex flex-col items-center justify-center gap-x-2 xsm:flex-row">
-                                <span class="font-semibold text-white">259</span>
+                             {{-- count the number of posts --}}
+                                <span class="font-semibold text-white">2</span>
                                 <span class="text-sm">Posts</span>
                             </div>
                         </div>
