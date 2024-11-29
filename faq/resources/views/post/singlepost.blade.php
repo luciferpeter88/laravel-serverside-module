@@ -17,13 +17,14 @@
 
     <!-- Comments Section -->
     <div class="mt-8">
+        <h3 class="text-[1.25rem] font-bold text-white">Comments</h3>
         <div class="rounded-lg mt-4">
             @forelse ($post->comments as $comment)
             {{-- Create a white tailwind line --}}
-            <div class="h-[0.5px] bg-white"></div>
-                <div class="mb-4 bg-[rgb(36,48,63)] p-4">
+            <div class="h-[3px] bg-[rgb(36,48,63)] rounded-full"></div>
+                <div class="mb-4  p-4">
                    <div class="flex justify-between"> 
-                    <p class="text-sm text-gray-500">
+                    <p class="text-md text-white">
                         {{ $comment->user->username }}
                     </p>
                     <p class="text-sm text-gray-500"> {{ $comment->created_at->format('Y-m-d H:i') }}</p>
