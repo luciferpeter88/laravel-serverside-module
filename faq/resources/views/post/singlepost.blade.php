@@ -25,7 +25,7 @@
                 <div class="mb-4">
                                    
                    <div class="flex gap-x-5 mt-4">
-                    <img src="{{auth()->user() ? asset('storage/' . auth()->user()->profilePicturePath) : asset('images/default-profile.png') }}" alt="profile picture" class="w-16 h-16 rounded-md">
+                    <img src="{{$post->user->profilePicturePath ? asset('storage/' . $post->user->profilePicturePath) : asset('images/default-profile.png') }}" alt="profile picture" class="w-16 h-16 rounded-md">
                     <div class="flex flex-col gap-x-2">
                         <p class="text-md text-white">
                             {{ $comment->user->username }}
