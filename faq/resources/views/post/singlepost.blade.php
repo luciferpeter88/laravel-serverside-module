@@ -22,7 +22,7 @@
             @forelse ($post->comments as $comment)
             {{-- Create a white tailwind line --}}
             <div class="h-[3px] bg-[rgb(36,48,63)] rounded-full"></div>
-            <img src="{{asset('storage/' . auth()->user()->profilePicturePath) }}" alt="profile picture" class="w-10 h-10 rounded-full mt-4">
+            <img src="{{auth()->user() ? asset('storage/' . auth()->user()->profilePicturePath) : asset('images/default-profile.png') }}" alt="profile picture" class="w-10 h-10 rounded-full mt-4">
                 <div class="mb-4  p-4">
                    <div class="flex justify-between"> 
                     <p class="text-md text-white">
@@ -31,24 +31,26 @@
                     <p class="text-sm text-gray-500"> {{ $comment->created_at->format('Y-m-d H:i') }}</p>
                    </div>
                     <p class="text-gray-200">{{ $comment->content }}</p>
-                    @if (auth()->id() === $comment->user_id)
-                    <div class="flex gap-x-2 mt-2 justify-end">
-                        <a href="{{ route('comment.edit', $comment->id) }}" class="text-white no-underline bg-blue-500 px-3 py-1 rounded-md">Edit</a>
-                        <form action="{{ route('comment.destroy', $comment->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this comment?');">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="text-white px-3 py-1 rounded-md bg-red-500">Delete</button>
-                        </form>
-                    </div>
-                    @elseif(auth()->user()->role === 'admin' || auth()->user()->role === 'superadmin')
-                    <div class="flex gap-x-2 mt-2 justify-end">
-                        <form action="{{ route('comment.destroy', $comment->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this comment?');">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="text-white px-3 py-1 rounded-md bg-red-500">Delete</button>
-                        </form>
-                    </div>
-                    @endif
+                    @auth
+                        @if (auth()->id() === $comment->user_id)
+                        <div class="flex gap-x-2 mt-2 justify-end">
+                            <a href="{{ route('comment.edit', $comment->id) }}" class="text-white no-underline bg-blue-500 px-3 py-1 rounded-md">Edit</a>
+                            <form action="{{ route('comment.destroy', $comment->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this comment?');">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="text-white px-3 py-1 rounded-md bg-red-500">Delete</button>
+                            </form>
+                        </div>
+                        @elseif(auth()->user()->role === 'admin' || auth()->user()->role === 'superadmin')
+                        <div class="flex gap-x-2 mt-2 justify-end">
+                            <form action="{{ route('comment.destroy', $comment->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this comment?');">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="text-white px-3 py-1 rounded-md bg-red-500">Delete</button>
+                            </form>
+                        </div>
+                        @endif
+                    @endauth
                 </div>
             @empty
                 <p class="text-gray-500">No comments yet. Be the first to comment!</p>

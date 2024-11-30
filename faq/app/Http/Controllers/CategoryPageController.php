@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Http\Request;
 use App\Models\Category;
+use App\Models\Comment;
 
 class CategoryPageController extends Controller
 {
@@ -19,6 +20,7 @@ class CategoryPageController extends Controller
         if (!$category) {
             abort(404, 'Category not found.');
         }
+
          // Count the total number of posts for this category
          $totalPosts = $category->posts()->count();
          $postsPerPage = 10;
@@ -36,11 +38,14 @@ class CategoryPageController extends Controller
         ->take($postsPerPage)
         ->get();
 
+      $commentNum = Comment::count();
+
         return view('post.showposts', [
             'category' => $category,
             'posts' => $posts,
             'currentPage' => $pagenum,
             'totalPages' => $totalPages,
+            'commentNum' =>  $commentNum
         ]);
     }
 }

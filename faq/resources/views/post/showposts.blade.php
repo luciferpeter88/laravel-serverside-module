@@ -13,9 +13,9 @@
                         <x-post 
                             :title="$post->title" 
                             :category="$category->name" 
-                            :user="$post->user->name" 
+                            :user="$post->user->username" 
                             :createdAt="$post->created_at->format('Y-m-d H:i')" 
-                            :answers="$post->answers_count" 
+                            :answers="$commentNum" 
                             :route="'/post/' . $post->id"
                         />
                         </a>
