@@ -17,6 +17,7 @@
                             :createdAt="$post->created_at->format('Y-m-d H:i')" 
                             :answers="$post->comments_count" 
                             :route="'/post/' . $post->id"
+                            :id="$post->id"
                         />
                         </a>
                     </div>

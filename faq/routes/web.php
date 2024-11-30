@@ -71,6 +71,7 @@ Route::prefix('dashboard')->group(function () {
     Route::middleware(['role:superadmin'])->group(function () {
         Route::get('/allaregisteredmembers', [DashboardSuperAdminController::class, 'allaregisteredmembers'])->name('dashboard.allaregisteredmembers');
         Route::get('/addadmin', [DashboardSuperAdminController::class, 'addadmin'])->name('dashboard.addadmin');
+        Route::delete('/posts/{post}', [DashboardSuperAdminController::class, 'destroy'])->name('post.destroy');
     });
 
 

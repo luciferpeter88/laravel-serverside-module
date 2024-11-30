@@ -14,8 +14,9 @@ class Post extends Component
     public $createdAt;
     public $answers;
     public $route;
+    public $id;
 
-    public function __construct($title, $category, $user, $createdAt, $answers, $route)
+    public function __construct($title, $category, $user, $createdAt, $answers, $route, $id = null)
     {
         $this->title = $title;
         $this->category = $category;
@@ -23,6 +24,7 @@ class Post extends Component
         $this->createdAt = $createdAt;
         $this->answers = $answers;
         $this->route = $route;
+        $this->id = $id;
     }
 
     /**

@@ -8,7 +8,7 @@
         @if($posts->isEmpty())
         <p class="text-gray-400">There is no any posts yet.</p>
         @else
-        <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4">
+        <div class="grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 gap-4">
             @foreach ($posts as $post)
                 <x-post 
                     :title="$post->title" 
@@ -17,6 +17,7 @@
                     :createdAt="$post->created_at->format('d M Y')" 
                     :answers="$post->comments_count ?? 0"
                     :route="'/post/' . $post->id"
+                    :id="$post->id"
                 />
             @endforeach
         </div>
