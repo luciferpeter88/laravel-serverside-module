@@ -22,15 +22,20 @@
             @forelse ($post->comments as $comment)
             {{-- Create a white tailwind line --}}
             <div class="h-[3px] bg-[rgb(36,48,63)] rounded-full"></div>
-            <img src="{{auth()->user() ? asset('storage/' . auth()->user()->profilePicturePath) : asset('images/default-profile.png') }}" alt="profile picture" class="w-10 h-10 rounded-full mt-4">
-                <div class="mb-4  p-4">
-                   <div class="flex justify-between"> 
-                    <p class="text-md text-white">
-                        {{ $comment->user->username }}
-                    </p>
-                    <p class="text-sm text-gray-500"> {{ $comment->created_at->format('Y-m-d H:i') }}</p>
+                <div class="mb-4">
+                                   
+                   <div class="flex gap-x-5 mt-4">
+                    <img src="{{auth()->user() ? asset('storage/' . auth()->user()->profilePicturePath) : asset('images/default-profile.png') }}" alt="profile picture" class="w-16 h-16 rounded-md">
+                    <div class="flex flex-col gap-x-2">
+                        <p class="text-md text-white">
+                            {{ $comment->user->username }}
+                        </p>
+                      
+                        <p class="text-gray-200">{{ $comment->content }}</p>    
+                    </div>    
+                       
+                        <p class="text-sm text-gray-500 ml-auto"> {{ $comment->created_at->format('Y-m-d H:i') }}</p>
                    </div>
-                    <p class="text-gray-200">{{ $comment->content }}</p>
                     @auth
                         @if (auth()->id() === $comment->user_id)
                         <div class="flex gap-x-2 mt-2 justify-end">
