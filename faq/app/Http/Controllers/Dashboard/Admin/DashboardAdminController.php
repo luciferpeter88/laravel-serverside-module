@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Dashboard\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use App\Models\Post;
 class DashboardAdminController extends Controller
 {
     public function __construct()
@@ -13,7 +13,10 @@ class DashboardAdminController extends Controller
     }
     public function allpost()
     {
-        return view('dashboard.allpost'); // All post page
+        $posts = Post::all();
+        $posts = Post::withCount('comments')
+                 ->get();
+        return view('dashboard.allpost', compact('posts')); // All post page
     }
     public function addcategory()
     {
