@@ -67,8 +67,12 @@ class DashboardSuperAdminController extends Controller
     {
         // Delete the user with the given id
         $user = User::findOrFail($id);
+        // Check if the user is trying to delete their own account
+        if (auth()->id() === $user->id) {
+            return redirect()->back()->with('error', 'You cannot delete your own account.');
+        }
         // delete the user and all their posts, comments.
         $user->delete();
-        return redirect()->route('dashboard.allusers')->with('success', 'User deleted successfully');
+        return redirect()->route('dashboard.allaregisteredmembers')->with('success', 'User deleted successfully');
     }
 }
