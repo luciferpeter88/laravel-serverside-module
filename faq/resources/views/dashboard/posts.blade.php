@@ -16,6 +16,7 @@
                     :createdAt="$post->created_at->format('d M Y')" 
                     :answers="$post->comments_count ?? 0"
                     :route="'/post/' . $post->id"
+                    :id="$post->id"
                 />
             @endforeach
         @endif
