@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Dashboard\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Models\User;
 class DashboardAdminController extends Controller
 {
     public function __construct()
@@ -26,4 +27,11 @@ class DashboardAdminController extends Controller
     {
         return view('dashboard.allusers'); // All users page
     }
+    // public function deleteuser($id)
+    // {
+    //     // Delete the user with the given id
+    //     $user = User::findOrFail($id);
+    //     $user->delete();
+    //     return redirect()->route('dashboard.allusers')->with('success', 'User deleted successfully');
+    // }
 }
