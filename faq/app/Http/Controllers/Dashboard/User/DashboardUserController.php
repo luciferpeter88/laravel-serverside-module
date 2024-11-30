@@ -52,6 +52,9 @@ class DashboardUserController extends Controller
             ],
         ];
         $myposts = Post::where('user_id', auth()->id())->get();
+        $myposts = Post::where('user_id', auth()->id())
+                ->withCount('comments') // Adds a 'comments_count' attribute to each post
+                ->get();
         return view('dashboard.posts',compact('myposts')); // Posts page
     }
 

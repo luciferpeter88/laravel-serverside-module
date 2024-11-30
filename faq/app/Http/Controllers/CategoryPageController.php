@@ -2,17 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Log;
-use Illuminate\Http\Request;
 use App\Models\Category;
-use App\Models\Comment;
-use App\Models\Post;
+
 
 class CategoryPageController extends Controller
 {
     public function show($categoryName, $pagenum)
     {
-        Log::info('CategoryPageController@show: category = ' . $categoryName . ', pagenum = ' . $pagenum);
         if (!is_numeric($pagenum) || $pagenum < 1) {
             abort(404, 'Invalid page number.');
         }
