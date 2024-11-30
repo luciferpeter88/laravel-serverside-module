@@ -23,7 +23,7 @@
                     @elseif (Auth::user()->role == 'user')
                     <x-dash-sidebar :sidebarName="['My Posts', 'Add Post','Profile', 'Settings']" :routes="['dashboard.posts','dashboard.addpost' ,'dashboard.profile', 'dashboard.settings']" />
                     @else
-                    <x-dash-sidebar :sidebarName="['All Members', 'Add Admin']" :routes="['dashboard.allaregisteredmembers', 'dashboard.addadmin']" />
+                    <x-dash-sidebar :sidebarName="['All Post', 'All Members', 'Add Admin']" :routes="['dashboard.allpost', 'dashboard.allaregisteredmembers', 'dashboard.addadmin']" />
                     @endif
                 </aside>
                 <div class="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden">

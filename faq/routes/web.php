@@ -62,7 +62,7 @@ Route::prefix('dashboard')->group(function () {
 
     // Routes for 'admin' role
     Route::middleware(['role:admin'])->group(function () {
-        Route::get('/allpost', [DashboardAdminController::class, 'allpost'])->name('dashboard.allpost');
+        // Route::get('/allpost', [DashboardAdminController::class, 'allpost'])->name('dashboard.allpost');
         Route::get('/addcategory', [DashboardAdminController::class, 'addcategory'])->name('dashboard.addcategory');
         Route::get('/allusers', [DashboardAdminController::class, 'allusers'])->name('dashboard.allusers');
     });
@@ -73,6 +73,11 @@ Route::prefix('dashboard')->group(function () {
         Route::get('/addadmin', [DashboardSuperAdminController::class, 'addadmin'])->name('dashboard.addadmin');
     });
 
+
     // Shared routes can go here
+    Route::middleware(['role:admin,superadmin'])->group(function () {
+        Route::get('/allpost', [DashboardAdminController::class, 'allpost'])->name('dashboard.allpost');
+    });
+
 });
 
