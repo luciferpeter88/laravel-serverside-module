@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class DashboardSuperAdminController extends Controller
 {
@@ -22,6 +23,34 @@ class DashboardSuperAdminController extends Controller
     {
         return view('dashboard.addadmin'); // Add admin page
     }
+        public function storeadmin(Request $request)
+        {
+        // Validate the request with custom error messages
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|string|min:8|confirmed',
+        ], [
+            // Custom error messages
+            'name.required' => 'Name is required.',
+            'name.string' => 'Name must be a valid string.',
+            'email.required' => 'Email is required.',
+            'email.email' => 'Please provide a valid email address.',
+            'email.unique' => 'This email is already in use.',
+            'password.required' => 'Password is required.',
+            'password.min' => 'Password must be at least 8 characters.',
+            'password.confirmed' => 'Passwords do not match.',
+        ]);
+
+        // Create a new admin user
+        User::create([
+            'name' => $validatedData['name'],
+            'email' => $validatedData['email'],
+            'password' => Hash::make($validatedData['password']),
+            'role' => 'admin', // Assign admin role
+        ]);
+            return redirect()->back()->with('success', 'New admin added successfully.');
+        }
     public function destroy($id)
     {
         // Delete the user with the given id
