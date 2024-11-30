@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Comment;
+use App\Models\Post;
 
 class CategoryPageController extends Controller
 {
@@ -33,19 +34,17 @@ class CategoryPageController extends Controller
             abort(404, 'Page number out of range.');
         }
         $posts = $category->posts()
+        ->withCount('comments') 
         ->orderBy('created_at', 'desc') 
         ->skip(($pagenum - 1) * $postsPerPage)
         ->take($postsPerPage)
         ->get();
-
-      $commentNum = Comment::count();
 
         return view('post.showposts', [
             'category' => $category,
             'posts' => $posts,
             'currentPage' => $pagenum,
             'totalPages' => $totalPages,
-            'commentNum' =>  $commentNum
         ]);
     }
 }

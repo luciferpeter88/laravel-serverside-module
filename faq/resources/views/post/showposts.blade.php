@@ -15,7 +15,7 @@
                             :category="$category->name" 
                             :user="$post->user->username" 
                             :createdAt="$post->created_at->format('Y-m-d H:i')" 
-                            :answers="$commentNum" 
+                            :answers="$post->comments_count" 
                             :route="'/post/' . $post->id"
                         />
                         </a>
