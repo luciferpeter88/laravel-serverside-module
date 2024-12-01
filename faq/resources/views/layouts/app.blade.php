@@ -24,9 +24,14 @@
                     <ul class="navbar-nav ms-auto ">
                         {{-- global helper function --}}
                         @if(auth()->check())
-                            <!-- Bejelentkezett Felhasználók -->
                             <li class="nav-item">
-                                <a href="{{ route('dashboard.profile') }}" class="nav-link text-white" style="visibility: visible">Dashboard</a>
+                                @if (auth()->user()->role == 'admin')
+                                    <a href="{{ route('dashboard.allpost') }}" class="nav-link text-white" style="visibility: visible">Dashboard</a>
+                                @elseif (auth()->user()->role == 'user')
+                                    <a href="{{ route('dashboard.posts') }}" class="nav-link text-white" style="visibility: visible">Dashboard</a>
+                                @else
+                                    <a href="{{ route('dashboard.allaregisteredmembers') }}" class="nav-link text-white" style="visibility: visible">Dashboard</a>
+                                @endif
                             </li>
                             <li class="nav-item">
                                 <a href="{{ route('logout') }}" class="nav-link text-danger" style="visibility: visible"
@@ -34,12 +39,12 @@
                                    Logout
                                 </a>
                             </li>
-                            <!-- Kijelentkezési Form -->
+                            <!-- Logout Form -->
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                 @csrf
                             </form>
                         @else
-                            <!-- Vendégek -->
+                            <!-- Guest -->
                             @if (Route::has('login'))
                                 <li class="nav-item">
                                     <a class="nav-link text-white" style="visibility: visible" href="{{ route('login') }}">{{ __('Login') }}</a>
