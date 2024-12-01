@@ -50,10 +50,10 @@ class DashboardAdminController extends Controller
     }
 
 
-
-
     public function allusers()
     {
-        return view('dashboard.allusers'); // All users page
+        $users = User::where('role', 'user')->get();
+
+        return view('dashboard.allusers', compact('users')); // All users page
     }
 }

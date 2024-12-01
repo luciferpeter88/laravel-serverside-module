@@ -73,6 +73,9 @@ class DashboardSuperAdminController extends Controller
         }
         // delete the user and all their posts, comments.
         $user->delete();
+        if(auth()->user()->role == 'admin'){
+            return redirect()->route('dashboard.allusers')->with('success', 'User deleted successfully');
+        }
         return redirect()->route('dashboard.allaregisteredmembers')->with('success', 'User deleted successfully');
     }
 }

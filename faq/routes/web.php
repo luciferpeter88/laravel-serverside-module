@@ -71,7 +71,7 @@ Route::prefix('dashboard')->group(function () {
     // Routes for 'superadmin' role
     Route::middleware(['role:superadmin'])->group(function () {
         Route::get('/allaregisteredmembers', [DashboardSuperAdminController::class, 'allaregisteredmembers'])->name('dashboard.allaregisteredmembers');
-        Route::delete('/users/{user}', [DashboardSuperAdminController::class, 'deleteuser'])->name('dashboard.users.destroy');
+        // Route::delete('/users/{user}', [DashboardSuperAdminController::class, 'deleteuser'])->name('dashboard.users.destroy');
         Route::get('/addadmin', [DashboardSuperAdminController::class, 'addadmin'])->name('dashboard.addadmin');
         Route::post('/addadmin', [DashboardSuperAdminController::class, 'storeadmin'])->name('dashboard.storeadmin');
         Route::delete('/posts/{post}', [DashboardSuperAdminController::class, 'destroy'])->name('post.destroy');
@@ -81,6 +81,7 @@ Route::prefix('dashboard')->group(function () {
     // Shared routes can go here
     Route::middleware(['role:admin,superadmin'])->group(function () {
         Route::get('/allpost', [DashboardAdminController::class, 'allpost'])->name('dashboard.allpost');
+        Route::delete('/users/{user}', [DashboardSuperAdminController::class, 'deleteuser'])->name('dashboard.users.destroy');
     });
 
 });
