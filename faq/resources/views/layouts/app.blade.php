@@ -9,7 +9,6 @@
                 <a class="navbar-brand fw-bold text-white" href="{{ url('/') }}">
                     Laravel Q&A Platform
                 </a>
-        
                 <!-- Toggle Button for Mobile View -->
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -60,8 +59,6 @@
                 </div>
             </div>
         </nav>
-        
-
         <main class="py-4">
             @yield('content')
         </main>
