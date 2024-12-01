@@ -27,8 +27,6 @@ Route::middleware(['role:user'])->group(function () {
     // Update a comment
     Route::put('/comment/{id}', [CommentController::class, 'update'])->name('comment.update');
 
-    // Delete a comment
-    // Route::delete('/comment/{id}', [CommentController::class, 'destroy'])->name('comment.destroy');
 
 });
 
