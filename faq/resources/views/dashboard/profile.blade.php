@@ -17,7 +17,7 @@
             <div class="overflow-hidden rounded-sm bg-[rgb(36,48,63)] shadow-default">
                <x-feedback />
                 <div class="relative z-20 h-35 md:h-65">
-                    <img src="{{ $user->profilePicturePath 
+                    <img src="{{ $user->backgroundPicturePath 
                     ? asset('storage/' . $user->backgroundPicturePath) 
                     : asset('images/default-profile.png') }}" alt="profile cover" class="h-full w-full rounded-tl-sm rounded-tr-sm object-cover object-center" />
                     <div class="absolute bottom-1 right-1 z-10 xsm:bottom-4 xsm:right-4">
