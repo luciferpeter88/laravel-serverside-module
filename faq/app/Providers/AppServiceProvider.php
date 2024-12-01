@@ -27,6 +27,10 @@ class AppServiceProvider extends ServiceProvider
         Blade::component('components.dashboard.header2', 'dash-header2');
         Blade::component('components.svg.edit', 'svg-edit');
         Blade::component('components.feedback.feedback', 'feedback');
+        Blade::component('components.svg.bio', 'svg-bio');
+        Blade::component('components.svg.email', 'svg-email');
+        Blade::component('components.svg.profile', 'svg-profile');
+        Blade::component('components.svg.upload', 'svg-upload');
        
     }
 }

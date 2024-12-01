@@ -8,6 +8,7 @@
         @if($myposts->isEmpty())
         <p class="text-gray-400">You have not created any posts yet.</p>
         @else
+        <div class="grid gap-3 grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3"> 
             @foreach ($myposts as $post)
                 <x-post 
                     :title="$post->title" 
@@ -19,6 +20,7 @@
                     :id="$post->id"
                 />
             @endforeach
+        </div>
         @endif
     </div>
 </section>
