@@ -20,7 +20,7 @@ class DashboardUserController extends Controller
         // Get the total number of posts created by the user
         $postCount = Post::where('user_id', $user->id)->count();
 
-        return view('dashboard.profile', compact('user', 'postCount')); // Profile page
+        return view('dashboard.user.profile', compact('user', 'postCount')); // Profile page
     }
 
     public function posts()
@@ -55,13 +55,13 @@ class DashboardUserController extends Controller
         $myposts = Post::where('user_id', auth()->id())
                 ->withCount('comments') // Adds a 'comments_count' attribute to each post
                 ->get();
-        return view('dashboard.posts',compact('myposts')); // Posts page
+        return view('dashboard.user.posts',compact('myposts')); // Posts page
     }
 
     public function settings()
     {
         $user = auth()->user(); // Get the currently authenticated user
-        return view('dashboard.settings', compact('user')); // Settings page
+        return view('dashboard.user.settings', compact('user')); // Settings page
     }
     public function updateSettings(Request $request)
     {
@@ -152,7 +152,7 @@ class DashboardUserController extends Controller
     public function createpost()
     {
         $categories = Category::all();
-        return view('dashboard.addpost', compact('categories')); // Add post page
+        return view('dashboard.user.addpost', compact('categories')); // Add post page
     }
 public function storepost(Request $request)
 {
