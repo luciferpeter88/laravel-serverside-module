@@ -60,7 +60,7 @@ class DashboardSuperAdminController extends Controller
 
         // Delete the post itself
         $post->delete();
-        return redirect()->route('dashboard.allpost')->with('success', 'User deleted successfully');
+        return redirect()->route('dashboard.allpost')->with('success', 'Post deleted successfully');
     }
 
     public function deleteuser($id)
