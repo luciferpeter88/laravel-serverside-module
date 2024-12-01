@@ -13,6 +13,7 @@ class WelcomeController extends Controller
     {
      
         $categories = Category::all();
+        $categories = Category::withCount('posts')->get(); // Include post counts
         // get the 5 most recent posts
         $recentPosts = Post::orderBy('created_at', 'desc')->take(5)->get();
         // get the number of comments for each post

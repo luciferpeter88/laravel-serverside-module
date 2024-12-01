@@ -10,10 +10,12 @@ class Category extends Component
 {
     public $name;
     public $description;
-    public function __construct($name, $description)
+    public $pageNumber;
+    public function __construct($name, $description, $pageNumber)
     {
         $this->name = $name;
         $this->description = $description;
+        $this->pageNumber = $pageNumber;
     }
 
     /**

@@ -2,7 +2,7 @@
     <!-- Category Name -->
     <h3 class="text-lg font-bold text-blue-500">
         {{-- category.show --}}
-        <a href="{{ route('category.show', ['category' => strtolower($name), 'pagenum' => 1]) }}" class="no-underline">
+        <a href="{{ route('category.show', ['category' => strtolower($name), 'pagenum' => $pageNumber]) }}" class="no-underline">
             {{ $name }}
         </a>        
         {{-- <a href="posts/{{strtolower($name)}}/1" class="no-underline">

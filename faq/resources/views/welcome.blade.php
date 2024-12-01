@@ -27,7 +27,11 @@
                 <h3 class="text-xl font-semibold text-white mb-4">Categories</h3>
                 <div class="bg-[rgb(36,48,63)] shadow rounded-lg p-6 flex flex-col gap-y-2 ">
                     @foreach ($categories as $category)
-                    <x-category :name="$category['name']" :description="$category['description']" />
+                    @php
+                    // Calculate page number based on the number of posts
+                    $pageNumber = $category->posts_count > 0 ? ceil($category->posts_count / 10) : 1;
+                    @endphp
+                    <x-category :name="$category['name']" :description="$category['description']" :pageNumber="$pageNumber" />
                     @endforeach
                 </div>
             </section>
