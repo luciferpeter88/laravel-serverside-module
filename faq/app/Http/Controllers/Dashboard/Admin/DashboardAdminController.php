@@ -19,13 +19,13 @@ class DashboardAdminController extends Controller
         $posts = Post::all();
         $posts = Post::withCount('comments')
                  ->get();
-        return view('dashboard.allpost', compact('posts')); // All post page
+        return view('dashboard.admin.allpost', compact('posts')); // All post page
     }
     public function addcategory()
     {        
         $categories = Category::all();
 
-        return view('dashboard.addcategory', compact('categories')); // Add category page
+        return view('dashboard.admin.addcategory', compact('categories')); // Add category page
     }
     public function storecategory(Request $request)
     {
@@ -54,6 +54,6 @@ class DashboardAdminController extends Controller
     {
         $users = User::where('role', 'user')->get();
 
-        return view('dashboard.allusers', compact('users')); // All users page
+        return view('dashboard.admin.allusers', compact('users')); // All users page
     }
 }

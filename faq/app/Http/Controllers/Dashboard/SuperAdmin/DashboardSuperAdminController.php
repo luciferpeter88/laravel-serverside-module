@@ -17,11 +17,11 @@ class DashboardSuperAdminController extends Controller
     public function allaregisteredmembers()
     {
         $users = User::all(); 
-        return view('dashboard.allaregisteredmembers',compact('users')); // All registered members page
+        return view('dashboard.superadmin.allaregisteredmembers',compact('users')); // All registered members page
     }
     public function addadmin()
     {
-        return view('dashboard.addadmin'); // Add admin page
+        return view('dashboard.superadmin.addadmin'); // Add admin page
     }
         public function storeadmin(Request $request)
         {
