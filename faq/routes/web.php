@@ -64,6 +64,7 @@ Route::prefix('dashboard')->group(function () {
     Route::middleware(['role:admin'])->group(function () {
         // Route::get('/allpost', [DashboardAdminController::class, 'allpost'])->name('dashboard.allpost');
         Route::get('/addcategory', [DashboardAdminController::class, 'addcategory'])->name('dashboard.addcategory');
+        Route::post('/storecategory', [DashboardAdminController::class, 'storecategory'])->name('dashboard.storecategory');
         Route::get('/allusers', [DashboardAdminController::class, 'allusers'])->name('dashboard.allusers');
     });
 
