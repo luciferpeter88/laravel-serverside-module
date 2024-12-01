@@ -53,11 +53,11 @@
     
                 <!-- Actions -->
                 <div class="flex items-center justify-center p-2.5 xl:p-5">
-                    <form action="{{ route('dashboard.users.destroy', $user->id) }}" method="POST" style="display:inline-block;">
+                    <form action="{{ route('dashboard.users.destroy', $user->id) }}" method="POST" style="display:inline-block;" onsubmit="return confirm('Are you sure you want to delete {{$user->name}}?')">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="text-red-500 hover:text-red-700" onclick="return confirm('Are you sure you want to delete {{$user->username}}?')">
-                            Delete
+                        <button type="submit">
+                            <x-svg.delete />
                         </button>
                     </form>
                 </div>

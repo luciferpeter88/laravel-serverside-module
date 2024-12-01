@@ -19,7 +19,8 @@
             @csrf
             @method('DELETE')
             @if (Auth::user()->role == 'superadmin')
-            <button class="bg-red-500 text-gray-400 rounded-full w-7 h-7 absolute bottom-3 right-3" type="submit" >X</button>
+         
+            <button class=" absolute bottom-3 right-3" type="submit" ><x-svg.delete /></button>
             @endif
         </form>
         @endauth

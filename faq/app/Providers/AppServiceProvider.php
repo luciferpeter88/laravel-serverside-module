@@ -31,6 +31,7 @@ class AppServiceProvider extends ServiceProvider
         Blade::component('components.svg.email', 'svg-email');
         Blade::component('components.svg.profile', 'svg-profile');
         Blade::component('components.svg.upload', 'svg-upload');
+        Blade::component('components.svg.delete', 'svg-delete');
        
     }
 }
