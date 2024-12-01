@@ -15,7 +15,7 @@ use App\Http\Controllers\CommentController;
 
 Route::get('/', [WelcomeController::class, 'index']);
 Route::get('/post/{id}', [PostController::class, 'show'])->where('id', '[0-9]+')->name('post.singlepost');
-Route::get('/posts/{category}/{pagenum}', [CategoryPageController::class, 'show']);
+Route::get('/posts/{category}/{pagenum}', [CategoryPageController::class, 'show'])->where('pagenum', '[0-9]+')->name('category.show');
 
 Route::middleware(['role:user'])->group(function () {
     // Create a comment

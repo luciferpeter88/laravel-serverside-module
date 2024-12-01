@@ -20,7 +20,7 @@
                 <div class="bg-[rgb(36,48,63)] shadow rounded-lg p-6 flex flex-col gap-y-2 ">
                     @foreach ($categories as $category)
                     <x-category :name="$category['name']" :description="$category['description']" />
-                @endforeach
+                    @endforeach
                 </div>
             </section>
 
