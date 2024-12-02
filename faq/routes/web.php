@@ -11,7 +11,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\CommentController;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
-
+use App\Http\Controllers\GoogleController;
 
 
 
@@ -19,6 +19,15 @@ use Illuminate\Foundation\Auth\EmailVerificationRequest;
 Route::get('/', [WelcomeController::class, 'index']);
 Route::get('/post/{id}', [PostController::class, 'show'])->where('id', '[0-9]+')->name('post.singlepost');
 Route::get('/posts/{category}/{pagenum}', [CategoryPageController::class, 'show'])->where('pagenum', '[0-9]+')->name('category.show');
+
+// Google authentication
+
+
+Route::get('auth/google', [GoogleController::class, 'redirectToGoogle'])->name('google.login');
+Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);
+
+
+
 // Route to show the email verification notice
 Route::get('/email/verify', function () {
     return view('auth.verify');
