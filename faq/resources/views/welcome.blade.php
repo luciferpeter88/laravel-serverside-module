@@ -35,23 +35,6 @@
                     @endforeach
                 </div>
             </section>
-
-            <!-- Search -->
-            <section>
-                <h3 class="text-xl font-semibold text-gray-800 mb-4">Keresés</h3>
-                {{-- action="{{ route('questions.search') }}"  --}}
-                <form method="GET" class="bg-white shadow rounded-lg p-6">
-                    <input 
-                        type="text" 
-                        name="query" 
-                        placeholder="Keresés kérdések között..." 
-                        class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-400 focus:outline-none"
-                    >
-                    <button type="submit" class="mt-4 w-full bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600">
-                        Keresés
-                    </button>
-                </form>
-            </section>
         </aside>
 
     </div>
