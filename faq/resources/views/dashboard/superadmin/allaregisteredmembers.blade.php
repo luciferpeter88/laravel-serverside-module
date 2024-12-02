@@ -31,7 +31,7 @@
                 <!-- Profile Picture -->
                 <div class="flex items-center gap-3 p-2.5 xl:p-5">
                     <div class="flex-shrink-0">
-                        <img src="{{ $user->profilePicturePath ? asset('storage/' . $user->profilePicturePath) : asset('images/default-avatar.png') }}" 
+                        <img src="{{ $user->profilePicturePath ? asset('storage/' . $user->profilePicturePath) : asset('storage/default/default-background.png') }}" 
                              alt="{{ $user->username }}'s Profile Picture" 
                              class="w-12 h-12 rounded-full">
                     </div>

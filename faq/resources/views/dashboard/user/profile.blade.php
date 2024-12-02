@@ -19,7 +19,7 @@
                 <div class="relative z-20 h-35 md:h-65">
                     <img src="{{ $user->backgroundPicturePath 
                     ? asset('storage/' . $user->backgroundPicturePath) 
-                    : asset('images/default-profile.png') }}" alt="profile cover" class="h-full w-full rounded-tl-sm rounded-tr-sm object-cover object-center" />
+                    : asset('storage/default/default-background.png') }}" alt="profile cover" class="h-full w-full rounded-tl-sm rounded-tr-sm object-cover object-center" />
                     <div class="absolute bottom-1 right-1 z-10 xsm:bottom-4 xsm:right-4">
                      <x-svg.edit />
                     </div>
@@ -30,7 +30,7 @@
                             class="h-full w-full object-cover rounded-full" 
                             src="{{ $user->profilePicturePath 
                                     ? asset('storage/' . $user->profilePicturePath) 
-                                    : asset('images/default-profile.png') }}" 
+                                    : asset('storage/default/default-background.png') }}" 
                             alt="User" />
                     </div>
                     <div class="mt-4">
