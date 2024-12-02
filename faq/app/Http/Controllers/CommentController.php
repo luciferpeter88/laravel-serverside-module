@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Comment;
+use App\Notifications\CommentNotification;
 
 class CommentController extends Controller
 {
@@ -16,11 +17,15 @@ class CommentController extends Controller
 
         $post = Post::findOrFail($postId);
 
-        Comment::create([
+        $comment = Comment::create([
             'post_id' => $post->id,
             'user_id' => auth()->id(),
             'content' => $request->input('content'),
         ]);
+
+        if ($post->user_id !== auth()->id()) {
+            $post->user->notify(new CommentNotification($comment, $post));
+        }
 
         return redirect()->back()->with('success', 'Comment added successfully!');
     }

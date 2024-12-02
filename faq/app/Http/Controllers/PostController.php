@@ -14,23 +14,23 @@ class PostController extends Controller
         // Pass the post and its comments to the view
         return view('post.singlepost', compact('post',));
     }
-    public function store(Request $request, $postId)
-    {
-        // Validate the comment content
-        $request->validate([
-            'content' => 'required|string|max:1000',
-        ]);
+    // public function store(Request $request, $postId)
+    // {
+    //     // Validate the comment content
+    //     $request->validate([
+    //         'content' => 'required|string|max:1000',
+    //     ]);
 
-        // Find the post by ID
-        $post = Post::findOrFail($postId);
+    //     // Find the post by ID
+    //     $post = Post::findOrFail($postId);
 
-        // Create the comment
-        Comment::create([
-            'post_id' => $post->id,
-            'user_id' => auth()->id(), 
-            'content' => $request->input('content'),
-        ]);
+    //     // Create the comment
+    //     Comment::create([
+    //         'post_id' => $post->id,
+    //         'user_id' => auth()->id(), 
+    //         'content' => $request->input('content'),
+    //     ]);
 
-        return redirect()->back()->with('success', 'Comment added successfully!');
-    }
+    //     return redirect()->back()->with('success', 'Comment added successfully!');
+    // }
 }
