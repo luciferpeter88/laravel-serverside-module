@@ -3,15 +3,15 @@
 <x-head-tag />
 <body class="dark text-bodydark bg-boxdark-2" >
     <div id="app" >
-        <nav class="navbar navbar-expand-md navbar-light bg-[rgb(36,48,63)] shadow-sm h-20 ">
+        <nav class="navbar navbar-expand-md navbar-light bg-[rgb(36,48,63)] shadow-sm min-h-20 ">
             <div class="container">
                 <!-- Brand -->
                 <a class="navbar-brand fw-bold text-white" href="{{ url('/') }}">
                     Laravel Q&A Platform
                 </a>
                 <!-- Toggle Button for Mobile View -->
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
+                <button class="navbar-toggler bg-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                    <span class="navbar-toggler-icon "></span>
                 </button>
         
                 <!-- Navbar Content -->
