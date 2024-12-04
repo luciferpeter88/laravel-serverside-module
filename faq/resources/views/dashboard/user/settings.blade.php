@@ -110,7 +110,7 @@
                                         <img 
                                         src="{{ $user->profilePicturePath 
                                                 ? asset('storage/' . $user->profilePicturePath) 
-                                                : asset('images/default-profile.png') }}" 
+                                                : asset('storage/default/default-background.png') }}" 
                                         alt="User" />
                                     </div>
                                     <div>
